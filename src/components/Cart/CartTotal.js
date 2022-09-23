@@ -1,5 +1,6 @@
 import styled from 'styled-components/macro';
 import { currencyKR } from 'utils';
+import { useCart } from '../../context/cart';
 
 const Total = styled.div`
   display: flex;
@@ -13,6 +14,9 @@ const Total = styled.div`
 
 /* -------------------------------------------------------------------------- */
 
-export default function CartTotal({ children }) {
-  return <Total>구매 총액﹕{currencyKR(children)}</Total>;
+export default function CartTotal() {
+
+  const { carts } = useCart();
+
+  return <Total>구매 총액﹕{currencyKR(carts.totalPrice)}</Total>;
 }
